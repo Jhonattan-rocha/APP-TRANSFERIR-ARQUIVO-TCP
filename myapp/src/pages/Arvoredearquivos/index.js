@@ -14,6 +14,8 @@ export default function Tree(){
     const [func, setFunc] = React.useState([]);
     const [showMakeDir, setShowMakeDir] = React.useState(false);
     const [folder, setFolder] = React.useState("");
+    const [showIp, setShowIp] = React.useState('');
+    const [ip, setIp] = React.useState('');
     const navigate = useNavigation();
 
     function removerObjetoDoArray(array, objetoParaRemover) {
@@ -115,6 +117,11 @@ export default function Tree(){
                     console.log(file);
                     break;
                 }
+
+                case types.nearshare: {
+                    setShowIp(true)
+                    break;
+                }
             }
         });
 
@@ -201,6 +208,16 @@ export default function Tree(){
                                         }}
                                         >
                                         <Text style={{color: "black"}}>Compartilhar</Text>
+                                        </TouchableOpacity>
+
+                                        <TouchableOpacity
+                                        style={style.option}
+                                        onPress={() => {
+                                            setFunc([{name: 'Compartilhar Por Proximidade', func: types.nearshare}]);
+                                            setOps(false)
+                                        }}
+                                        >
+                                        <Text style={{color: "black"}}>Compartilhar Por Proximidade</Text>
                                         </TouchableOpacity>
 
                                         <TouchableOpacity
@@ -311,7 +328,29 @@ export default function Tree(){
                         }}></Button>
                     </View>
                     </Modal>:
-                    null}
+                null}
+                {showIp ? 
+                    <Modal visible={showIp} transparent={true} animationType="fade">
+                    <TouchableWithoutFeedback onPress={() => {
+                        setShowIp(false)
+                    }}>
+                        <View style={style.overlay} />
+                    </TouchableWithoutFeedback>
+                    <View style={style.containerMes}>
+                        <TextInput
+                        style={style.inputMakeDir} 
+                        value={ip}
+                        autoFocus={true}
+                        numberOfLines={3}
+                        multiline
+                        onChangeText={(txt) => setIp(txt)}
+                        />
+                        <Button title='Enviar' onPress={() => {
+
+                        }}></Button>
+                    </View>
+                    </Modal>:
+                null}
             </SafeAreaView>
     );
 }
