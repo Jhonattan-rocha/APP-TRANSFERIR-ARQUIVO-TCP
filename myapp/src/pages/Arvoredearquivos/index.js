@@ -143,8 +143,8 @@ export default function Tree(){
     };
 
     React.useEffect(() => {
-        setMain({path: "/storage"});
-        UpdatePaths({path: "/storage"});
+        setMain({path: "/storage/emulated/0/"});
+        UpdatePaths({path: "/storage/emulated/0/"});
     }, [])
 
     React.useEffect(() => { 
