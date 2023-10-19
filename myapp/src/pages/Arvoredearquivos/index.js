@@ -21,8 +21,8 @@ export default function Tree(){
     function removerObjetoDoArray(array, objetoParaRemover) {
         for (let i = 0; i < array.length; i++) {
             if (array[i] === objetoParaRemover) {
-                array.splice(i, 1); // Remove 1 elemento a partir do índice i
-                break; // Encerra o loop após encontrar o objeto
+                array.splice(i, 1);
+                break; 
             }
         }
 
